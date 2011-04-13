@@ -1,0 +1,12 @@
+<h2>List registered users</h2>
+<ul class="margin_list">
+<% @user.each do |user| %>
+	<li><%= user.username %> <%= user.email %>
+	
+	<%= form_tag group_invite_index_path do %>
+  		<%= hidden_field_tag :user_id, user.id %>
+    		<%= submit_tag "Invite", :class =>"diplay_inline"  %>
+	<% end %>
+	</li>
+<% end %>
+</ul>

@@ -1,0 +1,22 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>Queject Mobile</title>
+  <%= stylesheet_link_tag "mobile" %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "jquery.mobile-1.0a2.min.js" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<div data-role="page">
+    <div data-role="header"><h4>Queject Mobile</h4></div>
+    <div data-role="controlgroup" data-type="horizontal"><%= render 'layouts/mobile/menu_mobile' %></div>
+        <% flash.each do |key, value| %>
+            <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+    <div data-role="content" id="content"><%= yield %></div> 
+    <div data-role="footer"><%= link_to "Imprint", pages_imprint_path, "data-role" => "button" %><%= link_to "Logout", signout_path, "data-role" => "button", :method => :delete %></div> 
+</div>
+</body>
+</html>

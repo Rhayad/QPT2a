@@ -1,0 +1,8 @@
+<%= link_to "Home", pages_home_path, "data-role" => "button" %>
+<% unless signed_in? %>
+	<%= link_to "Login", signin_path, "data-role" => "button" %>
+	<%= link_to "Register", signup_path, "data-role" => "button" %>
+<% else %>
+    <%= link_to "Profile", current_user, "data-role" => "button" %>
+    <%= link_to "Groups", groups_path, "data-role" => "button" %>    
+<% end %>

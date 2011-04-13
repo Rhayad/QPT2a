@@ -1,0 +1,35 @@
+<h2>Groups of <%= current_user.username %></h2>
+
+<h3>Own Groups</h3>
+<% unless @group.empty? %>
+	<ul class="margin_list">
+		<% @group.each do |group| %>
+			<li><%= link_to group.title, group_projects_path(group.id) %></li>
+		<% end %>
+	</ul>
+<% else %>
+    No own Groups !
+<% end %>
+
+
+<h3>Joined Groups</h3>
+<% unless @joinedGroup.empty? %>
+	<ul class="margin_list">
+		<% @joinedGroup.each do |jgroup| %>
+			<li><%= link_to jgroup.group.title, group_projects_path(jgroup.group.id) %></li>
+		<% end %>    
+	</ul>
+<% else %>
+    No groups joined !
+<% end %>
+
+<h3>Your Invitations</h3>
+<% unless @invitedGroup.empty? %>
+	<ul class="margin_list">
+		<% @invitedGroup.each do |igroup| %>
+			<li><%= button_to igroup.group.title, group_groupmember_path(igroup.group.id, igroup.id), :method => :put %></li>
+		<% end %>    
+	</ul>
+<% else %>
+    No Invitations !
+<% end %>

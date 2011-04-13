@@ -1,0 +1,19 @@
+--------------------------------------------
+> USER
+	=> add & edit firstname, lastname
+	=> only check password presence on signin and create
+
+--------------------------------------------
+> Group
+	=> remove group
+
+--------------------------------------------
+> PROJECTS
+	=> onCreate save user_id
+	=> onUpdate check if user_id = current_user
+	=> fix: onUpdate -> redirect_to
+	=> remove project
+
+--------------------------------------------
+> Todo
+	=> create MVC

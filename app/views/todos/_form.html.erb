@@ -1,0 +1,39 @@
+<h2><%= @todo.title %></h2>
+
+<%= form_for [@group, @project, @todo], :url => urlForm do |f| %>
+	<%= f.hidden_field "user_id", :value => current_user.id %>	 
+
+        <%= f.label "Assign to User" %>
+        <%= select_tag "assign", options_from_collection_for_select(@groupmembers, "userID", "userName") %>
+
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+
+        <%= f.label "Description (real life)" %>
+        <%= f.text_area :rl_description, :cols => 60, :rows => 5  %>
+
+        <%= f.label "RolePlay Title" %>
+        <%= f.text_field :rp_title %>
+
+	<%= f.label "Description (role play)" %>
+        <%= f.text_area :rp_description, :cols => 60, :rows => 5 %>    
+
+        <%= f.label :deadline %>
+        <%= f.date_select :deadline %>
+   
+   		<% f.fields_for :todo_users do |t| %>
+			<%= t.label :gold %>
+        	<%= t.text_field :gold , :size => 2 %>
+
+        	<%= t.label :xp %>
+        	<%= t.text_field :xp , :size => 2 %>
+
+        	<%= t.label "Check Todo" %>
+        	<%= t.check_box :isProved %>
+		<% end %>
+
+    <div class="actions">
+        <%= f.submit sButton %>
+    </div>
+<% end %>
+</div>

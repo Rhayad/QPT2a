@@ -1,0 +1,25 @@
+<div id="table_profile">
+	<%= render 'shared/error_msg', :obj => @project %>
+	<h2>Create a new project, <%= current_user.username %></h2>
+	<%= form_for [@group, @group.projects.build] do |f| %>
+	<%= f.hidden_field "user_id", :value => current_user.id %>	 
+	<table>		
+		<tr>
+			<td><%= f.label "Predefined Story" %></td>
+        	<td><%= select_tag "prestory", '<option value="0">Own Story</option>'.html_safe + options_from_collection_for_select(@prestories, "id", "title"), :id => "prestorySelect" %></td>
+    	</tr>
+	    <tr>
+	        <td><h4><%= f.label "Projekt name" %></h4></td>
+	        <td><%= f.text_field :title %></td>
+		</tr>
+		<tr>
+	        <td><h4><%= f.label "Destription"%></h4></td>
+	        <td><%= f.text_area :teaser, :cols => 60, :rows => 5 %></td>
+	    </tr>
+	</table>
+
+	<div class="actions">
+		<%= f.submit "Create Project" %>
+	</div>
+<% end %>
+</div>

@@ -1,0 +1,9 @@
+<li class="header_navi_background"><%= link_to "Home", pages_home_path %></li> 
+<% unless signed_in? %>	
+	<li class="header_navi_background"><%= link_to "Login", signin_path %></li>
+	<li class="header_navi_background"><%= link_to "Register", signup_path %></li> 
+<% else %>
+    <li class="header_navi_background"><%= link_to "Profile", current_user %></li>
+    <li class="header_navi_background"><%= link_to "Logout", signout_path, :method => :delete %></li>
+<% end %>
+

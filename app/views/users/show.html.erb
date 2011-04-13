@@ -1,0 +1,73 @@
+<div id="table_profile">
+	<h2>Profile of: <%= @user.username %></h2>
+	<table>
+		<tr>
+			<td><h4>Username:</h4></td>
+			<td><%= @user.username %></td>
+		</tr>
+		<tr>
+			<td><h4>E-Mail:</h4></td>
+			<td><%= @user.email %></td>
+		</tr>
+		<tr>
+			<td><h4>Name:</h4></td>
+			<td><%= @user.firstname %> <%= @user.lastname %></td>
+		</tr>
+		<tr>
+			<td style="vertical-align:top"><h4>Address:</h4></td>
+			<td>
+				<%= @user.street %><br />
+				<%= @user.zip %> <%= @user.city %><br />
+				<%= @user.country %>
+			</td>
+		</tr>
+		<tr>
+			<td><h4>Phone:</h4></td>
+			<td><%= @user.phone %></td>
+		</tr>
+	</table>
+
+	<table>
+		<h2>Your Avatar</h2>
+		<tr>
+			<td><h4>Level:</h4></td>
+			<td><%= image_tag "../images/icons/lv.png", :alt => 'level' %></td>
+			<td><%= @userLevel %></td>
+		</tr>
+		<tr>
+			<td><h4>Experience:</h4></td>
+			<td><%= image_tag "../images/icons/xp.png", :alt => 'experience' %></td>
+			<td><%= @userXp %></td>
+		</tr>
+		<tr>
+			<td><h4>Gold:</h4></td>
+			<td><%= image_tag "../images/icons/gold.png", :alt => 'gold' %></td>
+			<td><%= @userGold %></td>
+		</tr>
+		<tr>
+			<td><h4>Strength:</h4></td>
+			<td><%= image_tag "../images/icons/strength.png", :alt => 'strength' %></td>
+			<td><span id="spanStrength"><%= @avatar.strength %></span> <input type="button" value="+" id="strength" class="buttonSkillUp"></td>
+		</tr>
+		<tr>
+			<td><h4>Intelligence:</h4></td>
+			<td><%= image_tag "../images/icons/intelligence.png", :alt => 'intelligence' %></td>
+			<td><span id="spanIntelligence"><%= @avatar.intelligence %></span> <input type="button" value="+" id="intelligence" class="buttonSkillUp"></td>
+		</tr>
+		<tr>
+			<td><h4>Endurance:</h4></td>
+			<td><%= image_tag "../images/icons/endurance.png", :alt => 'endurance' %></td>
+			<td><span id="spanEndurance"><%= @avatar.endurance %></span> <input type="button" value="+" id="endurance" class="buttonSkillUp"></td>
+		</tr>
+		<tr>
+			<td><h4>Dexterity:</h4></td>
+			<td><%= image_tag "../images/icons/dexterity.png", :alt => 'dexterity' %></td>
+			<td><span id="spanAbility"><%= @avatar.ability %></span> <input type="button" value="+" id="ability" class="buttonSkillUp"></td>
+		</tr>
+		<% if @skillPoints > 0 %>
+			<tr>
+				<td><%= text_field_tag :skills, @skillPoints, :disabled => true, :id => "inputSkill" %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

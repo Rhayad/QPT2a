@@ -1,0 +1,1107 @@
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:06:31 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.7ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered groups/index.html.erb within layouts/application (53.6ms)
+Completed 200 OK in 305ms (Views: 75.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/pages/home" for 127.0.0.1 at Thu Mar 10 13:06:35 +0100 2011
+  Processing by PagesController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+Rendered layouts/_menu.html.erb (102.6ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered pages/home.html.erb within layouts/application (112.3ms)
+Completed 200 OK in 119ms (Views: 118.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/6" for 127.0.0.1 at Thu Mar 10 13:06:37 +0100 2011
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mAvatar Load (0.3ms)[0m  SELECT "avatars".* FROM "avatars" WHERE ("avatars".user_id = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT SUM("todo_users"."xp") AS sum_id FROM "todo_users" WHERE ("todo_users"."user_id" = 6) AND ("todo_users"."isProved" = 't')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("todo_users"."xp") AS sum_id FROM "todo_users" WHERE ("todo_users"."user_id" = 6) AND ("todo_users"."isProved" = 't')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT SUM("todo_users"."gold") AS sum_id FROM "todo_users" WHERE ("todo_users"."user_id" = 6) AND ("todo_users"."isProved" = 't')[0m
+  [1m[35mAvatar Load (0.2ms)[0m  SELECT "avatars".* FROM "avatars" WHERE ("avatars"."user_id" = 6) LIMIT 1
+Rendered layouts/_menu.html.erb (2.1ms)
+Rendered layouts/_menu_left.html.erb (1.6ms)
+Rendered users/show.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 150ms (Views: 18.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 13:42:58 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (110.4ms)
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered groups/new.html.erb within layouts/application (123.6ms)
+Completed 200 OK in 312ms (Views: 131.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 13:44:59 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (7.3ms)
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered groups/new.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 134ms (Views: 25.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:45:06 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+Completed   in 122ms
+
+NameError (undefined local variable or method `groupmember' for #<Group:0x10377ced8>):
+  app/models/group.rb:22:in `create_group'
+  app/controllers/groups_controller.rb:27:in `create'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.7ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (25.8ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 13:45:39 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (7.2ms)
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.6ms)
+Rendered groups/new.html.erb within layouts/application (19.6ms)
+Completed 200 OK in 143ms (Views: 25.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:45:46 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+Completed   in 121ms
+
+NameError (undefined local variable or method `groupmember' for #<Group:0x1037d2f40>):
+  app/models/group.rb:22:in `create_group'
+  app/controllers/groups_controller.rb:27:in `create'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.0ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.8ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 13:46:12 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (6.8ms)
+Rendered layouts/_menu.html.erb (2.0ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered groups/new.html.erb within layouts/application (19.6ms)
+Completed 200 OK in 146ms (Views: 26.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:46:15 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+Completed   in 121ms
+
+NameError (undefined local variable or method `groupmembers' for #<Group:0x10385bd68>):
+  app/models/group.rb:22:in `create_group'
+  app/controllers/groups_controller.rb:27:in `create'
+
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.5ms)
+Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.0ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 13:46:54 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (7.6ms)
+Rendered layouts/_menu.html.erb (2.2ms)
+Rendered layouts/_menu_left.html.erb (1.9ms)
+Rendered groups/new.html.erb within layouts/application (20.4ms)
+Completed 200 OK in 146ms (Views: 26.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:46:57 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+WARNING: Can't mass-assign protected attributes: user
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (4.6ms)
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered groups/new.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 184ms (Views: 23.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:48:17 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroupMember Load (0.3ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1[0m
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered groups/index.html.erb within layouts/application (54.7ms)
+Completed 200 OK in 187ms (Views: 58.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 13:48:22 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (7.4ms)
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.9ms)
+Rendered groups/new.html.erb within layouts/application (19.6ms)
+Completed 200 OK in 150ms (Views: 25.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:48:23 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroupMember Load (0.3ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1[0m
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered groups/index.html.erb within layouts/application (53.6ms)
+Completed 200 OK in 190ms (Views: 57.0ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 13:48:24 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (7.0ms)
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.9ms)
+Rendered groups/new.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 148ms (Views: 25.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 13:49:33 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (7.1ms)
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered groups/new.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 154ms (Views: 25.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:49:36 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: user
+Rendered shared/_error_msg.html.erb (0.7ms)
+Rendered groups/_form.html.erb (5.1ms)
+Rendered layouts/_menu.html.erb (2.0ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered groups/new.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 160ms (Views: 23.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:50:29 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: user
+  [1m[35mSQL (36.4ms)[0m  INSERT INTO "group_members" ("created_at", "group_id", "isInvited", "updated_at", "user_id") VALUES ('2011-03-10 12:50:29.394716', NULL, 'f', '2011-03-10 12:50:29.394716', NULL)
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "groups" ("created_at", "title", "updated_at", "user_id") VALUES ('2011-03-10 12:50:29.495927', 'Hallo Welt', '2011-03-10 12:50:29.495927', 6)[0m
+  [1m[35mGroupMember Load (0.1ms)[0m  SELECT "group_members".* FROM "group_members" WHERE ("group_members".group_id = NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "group_members" SET "group_id" = 12, "updated_at" = '2011-03-10 12:50:29.499037' WHERE ("group_members"."id" = 32)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 271ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:50:29 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered groups/index.html.erb within layouts/application (117.0ms)
+Completed 200 OK in 182ms (Views: 120.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/groups/12/projects" for 127.0.0.1 at Thu Mar 10 13:50:36 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 12) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 12)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 138ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:50:36 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.6ms)
+Rendered groups/index.html.erb within layouts/application (51.8ms)
+Completed 200 OK in 185ms (Views: 55.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/groups/12/projects" for 127.0.0.1 at Thu Mar 10 13:50:38 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 12) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 12)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 57ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:50:38 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (2.0ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered groups/index.html.erb within layouts/application (122.8ms)
+Completed 200 OK in 186ms (Views: 126.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/groups/12/projects" for 127.0.0.1 at Thu Mar 10 13:50:39 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 12) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 12)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 140ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:50:40 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.9ms)
+Rendered groups/index.html.erb within layouts/application (57.8ms)
+Completed 200 OK in 199ms (Views: 61.5ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/groups/12/projects" for 127.0.0.1 at Thu Mar 10 13:50:41 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 12) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 12)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 141ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:50:41 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.6ms)
+Rendered groups/index.html.erb within layouts/application (52.6ms)
+Completed 200 OK in 183ms (Views: 56.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/groups/12/projects" for 127.0.0.1 at Thu Mar 10 13:50:42 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 12) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 12)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 140ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:50:43 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered groups/index.html.erb within layouts/application (55.6ms)
+Completed 200 OK in 189ms (Views: 61.3ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/groups/11/projects" for 127.0.0.1 at Thu Mar 10 13:50:43 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.3ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 11)[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "group_members" WHERE ("group_members".group_id = 11)) AS subquery
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members".group_id = 11)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "projects" WHERE ("projects".group_id = 11)) AS subquery[0m
+Rendered layouts/_menu.html.erb (1.7ms)
+Rendered layouts/_menu_left.html.erb (1.9ms)
+Rendered projects/index.html.erb within layouts/application (23.7ms)
+Completed 200 OK in 243ms (Views: 101.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/groups/12/projects" for 127.0.0.1 at Thu Mar 10 13:50:49 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"12"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 12) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 12)
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 124ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:50:50 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroupMember Load (0.3ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1[0m
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (2.0ms)
+Rendered groups/index.html.erb within layouts/application (52.8ms)
+Completed 200 OK in 194ms (Views: 56.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/groups/12/projects" for 127.0.0.1 at Thu Mar 10 13:50:52 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"12"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 12) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 12)
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 134ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:50:52 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1[0m
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered groups/index.html.erb within layouts/application (52.7ms)
+Completed 200 OK in 194ms (Views: 55.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/groups/12/projects" for 127.0.0.1 at Thu Mar 10 13:50:59 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"12"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 12) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 12)
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 139ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:50:59 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1[0m
+Rendered layouts/_menu.html.erb (1.7ms)
+Rendered layouts/_menu_left.html.erb (2.0ms)
+Rendered groups/index.html.erb within layouts/application (52.9ms)
+Completed 200 OK in 186ms (Views: 56.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/groups/11/projects" for 127.0.0.1 at Thu Mar 10 13:51:00 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"11"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 11)
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "group_members" WHERE ("group_members".group_id = 11)) AS subquery[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" WHERE ("group_members".group_id = 11)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "projects" WHERE ("projects".group_id = 11)) AS subquery
+Rendered layouts/_menu.html.erb (1.7ms)
+Rendered layouts/_menu_left.html.erb (1.6ms)
+Rendered projects/index.html.erb within layouts/application (25.3ms)
+Completed 200 OK in 165ms (Views: 30.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/groups/12/projects" for 127.0.0.1 at Thu Mar 10 13:51:18 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 12) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 12)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 130ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 13:51:18 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.7ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered groups/index.html.erb within layouts/application (52.9ms)
+Completed 200 OK in 185ms (Views: 56.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/groups/11/projects" for 127.0.0.1 at Thu Mar 10 13:51:20 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.3ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 11)[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "group_members" WHERE ("group_members".group_id = 11)) AS subquery
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members".group_id = 11)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "projects" WHERE ("projects".group_id = 11)) AS subquery[0m
+Rendered layouts/_menu.html.erb (2.4ms)
+Rendered layouts/_menu_left.html.erb (4.1ms)
+Rendered projects/index.html.erb within layouts/application (30.9ms)
+Completed 200 OK in 188ms (Views: 36.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 13:52:08 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (7.4ms)
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered groups/new.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 73ms (Views: 25.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:52:11 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+WARNING: Can't mass-assign protected attributes: user
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (4.3ms)
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered groups/new.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 170ms (Views: 22.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 13:52:16 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (6.9ms)
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.9ms)
+Rendered groups/new.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 72ms (Views: 25.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:52:20 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt 1"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: user
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (4.5ms)
+Rendered layouts/_menu.html.erb (73.0ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered groups/new.html.erb within layouts/application (88.1ms)
+Completed 200 OK in 163ms (Views: 93.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:52:22 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt 1"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: user
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (4.6ms)
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.6ms)
+Rendered groups/new.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 163ms (Views: 22.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:52:23 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt 1"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: user
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (4.5ms)
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.6ms)
+Rendered groups/new.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 163ms (Views: 22.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:52:38 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt 1"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: user
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (4.9ms)
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (3.7ms)
+Rendered groups/new.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 178ms (Views: 26.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:52:40 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt 1"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: user
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (4.2ms)
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered groups/new.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 157ms (Views: 22.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 13:52:41 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt 1"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: user
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (4.8ms)
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (2.3ms)
+Rendered groups/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 161ms (Views: 23.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 14:04:16 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt 1"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: user
+  [1m[35mSQL (26.3ms)[0m  INSERT INTO "groups" ("created_at", "title", "updated_at", "user_id") VALUES ('2011-03-10 13:04:17.766555', 'Hallo Welt 1', '2011-03-10 13:04:17.766555', 6)
+  [1m[36mGroupMember Load (0.1ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members".group_id = NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_members" ("created_at", "group_id", "isInvited", "updated_at", "user_id") VALUES ('2011-03-10 13:04:17.808397', 13, 'f', '2011-03-10 13:04:17.808397', NULL)
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 725ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 14:04:17 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1[0m
+Rendered layouts/_menu.html.erb (2.3ms)
+Rendered layouts/_menu_left.html.erb (2.9ms)
+Rendered groups/index.html.erb within layouts/application (60.7ms)
+Completed 200 OK in 269ms (Views: 89.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/groups/13/projects" for 127.0.0.1 at Thu Mar 10 14:04:21 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"13"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 13) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 13)
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 184ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 14:04:21 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroupMember Load (0.3ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1[0m
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered groups/index.html.erb within layouts/application (96.9ms)
+Completed 200 OK in 249ms (Views: 100.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/groups/13/projects" for 127.0.0.1 at Thu Mar 10 14:04:23 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"13"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 13) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 13)
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 162ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 14:04:23 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroupMember Load (0.3ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1[0m
+Rendered layouts/_menu.html.erb (2.5ms)
+Rendered layouts/_menu_left.html.erb (1.9ms)
+Rendered groups/index.html.erb within layouts/application (58.7ms)
+Completed 200 OK in 211ms (Views: 62.6ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/groups/11/projects" for 127.0.0.1 at Thu Mar 10 14:04:25 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"11"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 11)
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "group_members" WHERE ("group_members".group_id = 11)) AS subquery[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" WHERE ("group_members".group_id = 11)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "projects" WHERE ("projects".group_id = 11)) AS subquery
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered projects/index.html.erb within layouts/application (26.7ms)
+Completed 200 OK in 249ms (Views: 33.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/groups/13/projects" for 127.0.0.1 at Thu Mar 10 14:04:35 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"13"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 13) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 13)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 115ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 14:04:35 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered groups/index.html.erb within layouts/application (134.7ms)
+Completed 200 OK in 226ms (Views: 138.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/groups/13/projects" for 127.0.0.1 at Thu Mar 10 14:04:36 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"13"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 13) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 13)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 147ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 14:04:37 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.4ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (2.2ms)
+Rendered groups/index.html.erb within layouts/application (67.2ms)
+Completed 200 OK in 217ms (Views: 70.5ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/groups/13/projects" for 127.0.0.1 at Thu Mar 10 14:04:39 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"13"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 13) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 13)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 149ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 14:04:39 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.4ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (2.2ms)
+Rendered groups/index.html.erb within layouts/application (63.8ms)
+Completed 200 OK in 251ms (Views: 70.5ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/groups/12/projects" for 127.0.0.1 at Thu Mar 10 14:04:40 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 12) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.3ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 12)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 154ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 14:04:40 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.4ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.6ms)
+Rendered groups/index.html.erb within layouts/application (62.0ms)
+Completed 200 OK in 202ms (Views: 66.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/groups/11/projects" for 127.0.0.1 at Thu Mar 10 14:04:41 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.3ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 11)[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "group_members" WHERE ("group_members".group_id = 11)) AS subquery
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members".group_id = 11)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "projects" WHERE ("projects".group_id = 11)) AS subquery[0m
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.7ms)
+Rendered projects/index.html.erb within layouts/application (24.2ms)
+Completed 200 OK in 173ms (Views: 29.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 14:06:09 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+Rendered shared/_error_msg.html.erb (0.5ms)
+Rendered groups/_form.html.erb (82.1ms)
+Rendered layouts/_menu.html.erb (2.2ms)
+Rendered layouts/_menu_left.html.erb (2.5ms)
+Rendered groups/new.html.erb within layouts/application (96.7ms)
+Completed 200 OK in 242ms (Views: 102.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 14:06:15 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt 2"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+WARNING: Can't mass-assign protected attributes: user
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "groups" ("created_at", "title", "updated_at", "user_id") VALUES ('2011-03-10 13:06:15.959493', 'Hallo Welt 2', '2011-03-10 13:06:15.959493', 6)[0m
+  [1m[35mGroupMember Load (0.2ms)[0m  SELECT "group_members".* FROM "group_members" WHERE ("group_members".group_id = NULL)
+  [1m[36mSQL (17.2ms)[0m  [1mINSERT INTO "group_members" ("created_at", "group_id", "isInvited", "updated_at", "user_id") VALUES ('2011-03-10 13:06:15.965257', 14, 'f', '2011-03-10 13:06:15.965257', NULL)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 216ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 14:06:16 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.4ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.9ms)
+Rendered groups/index.html.erb within layouts/application (81.4ms)
+Completed 200 OK in 234ms (Views: 84.2ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/groups/14/projects" for 127.0.0.1 at Thu Mar 10 14:07:08 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"14"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 14) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.3ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 14)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 136ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 14:07:09 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (1.9ms)
+Rendered groups/index.html.erb within layouts/application (141.7ms)
+Completed 200 OK in 210ms (Views: 144.8ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/groups/14/projects" for 127.0.0.1 at Thu Mar 10 14:07:10 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"14"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 14) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 14)[0m
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 137ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 14:07:10 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroupMember Load (0.4ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (1.9ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered groups/index.html.erb within layouts/application (65.2ms)
+Completed 200 OK in 266ms (Views: 68.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/groups/new" for 127.0.0.1 at Thu Mar 10 14:07:12 +0100 2011
+  Processing by GroupsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+Rendered shared/_error_msg.html.erb (0.7ms)
+Rendered groups/_form.html.erb (9.0ms)
+Rendered layouts/_menu.html.erb (2.0ms)
+Rendered layouts/_menu_left.html.erb (1.8ms)
+Rendered groups/new.html.erb within layouts/application (22.4ms)
+Completed 200 OK in 169ms (Views: 29.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/groups" for 127.0.0.1 at Thu Mar 10 14:07:18 +0100 2011
+  Processing by GroupsController#create as HTML
+  Parameters: {"group"=>{"title"=>"Hallo Welt 3"}, "commit"=>"Create new group", "authenticity_token"=>"T4X9e7nuiqgEqMRK7V82PoCEmZq8ChFZdP2+A1lguao=", "utf8"=>"✓"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "groups" ("created_at", "title", "updated_at", "user_id") VALUES ('2011-03-10 13:07:18.348562', 'Hallo Welt 3', '2011-03-10 13:07:18.348562', 6)
+  [1m[36mGroupMember Load (0.1ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members".group_id = NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "group_members" ("created_at", "group_id", "isInvited", "updated_at", "user_id") VALUES ('2011-03-10 13:07:18.353940', 15, 'f', '2011-03-10 13:07:18.353940', 6)
+Redirected to http://localhost:3000/groups
+Completed 302 Found in 161ms
+
+
+Started GET "/groups" for 127.0.0.1 at Thu Mar 10 14:07:18 +0100 2011
+  Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "groups" WHERE ("groups".user_id = 6)) AS subquery
+  [1m[36mGroup Load (0.4ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups".user_id = 6) ORDER BY groups.created_at DESC[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 't')[0m
+  [1m[35mGroup Load (0.2ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 7) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 9) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 11) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')[0m
+  [1m[35mGroupMember Load (0.3ms)[0m  SELECT "group_members".* FROM "group_members" INNER JOIN "groups" ON "groups"."id" = "group_members"."group_id" WHERE ("group_members".user_id = 6) AND ("group_members"."isInvited" = 'f')
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE ("groups"."id" = 10) ORDER BY groups.created_at DESC LIMIT 1[0m
+  [1m[35mGroup Load (1.5ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 15) ORDER BY groups.created_at DESC LIMIT 1
+Rendered layouts/_menu.html.erb (2.4ms)
+Rendered layouts/_menu_left.html.erb (2.2ms)
+Rendered groups/index.html.erb within layouts/application (70.5ms)
+Completed 200 OK in 210ms (Views: 72.4ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/groups/15/projects" for 127.0.0.1 at Thu Mar 10 14:07:20 +0100 2011
+  Processing by ProjectsController#index as HTML
+  Parameters: {"group_id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1[0m
+  [1m[35mGroup Load (0.3ms)[0m  SELECT "groups".* FROM "groups" WHERE ("groups"."id" = 15) ORDER BY groups.created_at DESC LIMIT 1
+  [1m[36mGroupMember Load (0.3ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members"."user_id" = 6) AND ("group_members"."group_id" = 15)[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "group_members" WHERE ("group_members".group_id = 15)) AS subquery
+  [1m[36mGroupMember Load (0.2ms)[0m  [1mSELECT "group_members".* FROM "group_members" WHERE ("group_members".group_id = 15)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 6) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM (SELECT 1 FROM "projects" WHERE ("projects".group_id = 15)) AS subquery[0m
+Rendered layouts/_menu.html.erb (1.8ms)
+Rendered layouts/_menu_left.html.erb (2.0ms)
+Rendered projects/index.html.erb within layouts/application (24.5ms)
+Completed 200 OK in 175ms (Views: 29.8ms | ActiveRecord: 1.6ms)

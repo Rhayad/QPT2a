@@ -1,0 +1,47 @@
+<div id="table_profile">
+	<%= form_for(@user) do |f| %>
+	<%= render 'shared/error_msg', :obj => @user %>
+	<h2>Edit your Profile, <%= @user.username %></h2>
+	<table>
+		<tr>
+			<td><h4><%= f.label :username %></h4></td>
+			<td><%= f.text_field :username %></td>
+		</tr>
+		<tr>
+			<td><h4><%= f.label :email %></h4></td>
+			<td><%= f.text_field :email %></td>
+		</tr>
+		<tr>
+			<td><h4><%= f.label :firstname %></h4></td>
+			<td><%= f.text_field :firstname %></td>
+		</tr>
+		<tr>
+			<td><h4><%= f.label :lastname %></h4></td>
+			<td><%= f.text_field :lastname %></td>
+		</tr>
+		<tr>
+			<td><h4><%= f.label :street %></h4></td>
+			<td><%= f.text_field :street %></td>
+		</tr>
+		<tr>
+			<td><h4><%= f.label :zip %></h4></td>
+			<td><%= f.text_field :zip %></td>
+		</tr>
+		<tr>
+			<td><h4><%= f.label :city %></h4></td>
+			<td><%= f.text_field :city %></td>
+		</tr>
+		<tr>
+			<td><h4><%= f.label :country %></h4></td>
+			<td><%= f.text_field :country %></td>
+		</tr>
+		<tr>
+			<td><h4><%= f.label :phone %></h4></td>
+			<td><%= f.text_field :phone %></td>
+		</tr>
+	</table>
+	<div class="actions">
+    	<%= f.submit "Update Profile" %>
+  	</div>
+	<% end %>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  strength: 1
+  intelligence: 1
+  ability: 1
+  endurance: 1
+
+two:
+  user_id: 1
+  strength: 1
+  intelligence: 1
+  ability: 1
+  endurance: 1

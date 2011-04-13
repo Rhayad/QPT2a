@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Queject - Paths of Tenira</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "skills", "prestory" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+	<div id="wrapper">
+		
+		<div id="header_wrap">
+			
+			<div id="header_navi">
+				<ul>
+					<%= render 'layouts/menu' %>
+				</ul>
+			</div>
+			
+	    </div>
+	
+		<div id="header">
+		</div>  
+			
+   	 	<div id="left_navi">
+			<%= render 'layouts/menu_left' %>
+		</div> 
+				
+		<div id="inner_content">
+			<% flash.each do |key, value| %>
+				
+				<div class="flash <%= key %>">
+					<%= value %>
+				</div>
+					
+			<% end %>                            
+	    	<%= yield %>
+		</div>
+		
+		<div id="footer">
+				<p><a href="#">Contact Us</a> | <a href="#">Impressum</a> | <a href="#">Contribute</a>| Copyright &copy; 2011 FH Salzburg. All Rights Reserved.</p>
+		</div>
+		
+    </div>        
+</body>
+</html>

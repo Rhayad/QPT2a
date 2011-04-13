@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  user_id: 1
+  project_id: 1
+  isChecked: false
+  deadline: 2010-12-25
+  startdate: 2010-12-25
+  estimatedTime: 1.5
+
+two:
+  title: MyString
+  user_id: 1
+  project_id: 1
+  isChecked: false
+  deadline: 2010-12-25
+  startdate: 2010-12-25
+  estimatedTime: 1.5

@@ -1,0 +1,15 @@
+<h2><%= @project.title %></h2>
+<p>
+<%= link_to "New", new_group_project_todo_path %>
+</p>
+
+<div style="margin:1em;border:1px solid #333333;padding:1em;">
+
+<% unless @group.project.todos.empty? %>
+    <%= render @todo %>
+<% else %>
+    No Todos !
+<% end %>
+
+<p>Find me in app/views/todos/index.html.erb</p>
+</div>

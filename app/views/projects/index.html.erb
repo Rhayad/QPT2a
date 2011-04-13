@@ -1,0 +1,66 @@
+<h2>Group: <%= @group.title %></h2>
+
+<% if @group.user_id == current_user.id %>
+	<ul class="no_list_style">
+		<li><%= link_to "Edit Group", edit_group_path(@group.id) %></li>
+	</ul>
+<% end %>
+
+<h3>Groupmembers</h3> 
+
+<table class="table_profile">
+	<% unless @groupmember.empty? %>
+		<% @groupmember.each do |igroup| %>
+			<tr>
+				<td style="padding:5px 10px 5px 0">
+					<%= link_to igroup.user.username, user_path(igroup.user.id) %> 
+				</td>
+				<% if current_user.id == @group.user_id && igroup.user_id != current_user.id %>
+					<td><%= button_to "banish", group_groupmember_path(@group.id, igroup.id, {:style => "display:inline" }), :method => :delete %></td>
+				<% end %>
+				<% if @group.user_id == igroup.user_id %>
+					<td>Groupmaster</td>
+				<% else %>
+					<td>Member</td>
+				<% end %>
+			</tr>
+		<% end %>
+	<% else %>
+    	No groupmembers !
+	<% end %>
+</table>
+
+
+<% if current_user.id == @group.user_id %>
+<h3>Invite a user to your group: <%= @group.title %></h3>
+	<%= form_tag group_find_path(@group.id) do %>
+  		<%= label_tag :username %>
+  		<%= search_field_tag :username %>
+  		<%= submit_tag "search user" %>
+	<% end %>
+<% end %>
+
+<h2 class="margin_top_30">Projects</h2>
+
+<% if @group.user_id == current_user.id %>
+	<ul class="no_list_style">
+		<li><%= link_to "New Project", new_group_project_path %></li> 
+	<ul>
+<% end %>
+
+<h3>Current projects</h3>
+<ul class="margin_list">
+	<% unless @project.empty? %>
+	    <li><%= render @project %></li>
+	<% else %>
+	    No current Projects!
+	<% end %>
+</ul>
+
+<div class="margin_top_30">
+<% if current_user.id == @group.user_id %>	
+	<%= button_to "Delete Group", group_path(@group.id), :confirm => "Are you sure?", :method => :delete %>
+<% else %>
+	<%= button_to "Leave group", group_groupmember_path(@group.id, @group.id), :method => :delete %>
+<% end %>
+</div>

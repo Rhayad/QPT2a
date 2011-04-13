@@ -1,0 +1,48 @@
+<h2>Project: <%= @project.title %></h2>
+
+<% if @group.user_id == current_user.id %>
+	<ul class="no_list_style">
+		<li><%= link_to "Edit Project", edit_group_project_path %></li>
+		<li><%= link_to "New Todo", new_group_project_todo_path(@group.id, @project.id) %></li>
+	</ul>		
+<% end %>
+
+<%= simple_format(@project.teaser) %>
+
+<h3>Quests begin (<%= @todouser.count %>)</h3>
+
+<% if @todouser.empty? %>
+    No current todos !
+<% else %>
+	<div class="margin_list">
+   	<% @todouser.each do |t| %>
+		<h3><%= t.todo.rp_title %></h3>
+		<%= image_tag "../images/icons/gold.png", :alt => 'gold' %> <%= t.gold %>
+		<%= image_tag "../images/icons/xp.png", :alt => 'xp' %> <%= t.xp %>
+		<%= simple_format(t.todo.rp_description) %>
+
+		<span id="<%= t.id %>" class="expand"> <%= image_tag "../images/icons/expand.png", :alt => 'expand' %> <u>Read real life instructions</u></span>
+		<div id="rlDescription<%= t.id %>" class="hideRlDescription"><%= simple_format(t.todo.rl_description) %></div>
+
+		<p>
+		<strong>
+		<% if t.isQueueDone != true %>
+			<%= button_to "Quest done", group_project_todo_check_path(@group.id, @project.id, t.todo.id, t.id), :method => "put" %>
+		<% elsif t.isQueueDone == true && t.isProved != true %>
+				Waiting for Master
+		<% else %>
+				Quest closed
+		<% end %>
+		</strong>
+		<% if current_user.id == t.todo.user_id %>
+			<%= link_to "[Edit]", edit_group_project_todo_path(@group.id, @project.id, t.todo.id) %>
+		<% end %>
+		</p>
+	<% end %>
+   	</div>
+<% end %>
+
+<div class="margin_top_30">
+	<%= button_to "Return to group: " + @group.title, group_projects_path(@group.id), :method => "get" %>
+</div>
+

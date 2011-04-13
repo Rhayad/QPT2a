@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  username: Name1
+  email: name@host.tld
+  encrypted_password: MyString
+
+#two:
+#  username: Name2
+#  email: name2@host.tld
+#  encrypted_password: MyStringPw2

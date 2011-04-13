@@ -1,0 +1,27 @@
+<div id="table_profile">
+	<%= form_for(@user) do |f| %>
+	<%= render 'shared/error_msg', :obj => @user %>
+	<h2>Register New User</h2>
+	<table>
+		<tr>
+			<td><h4><%= f.label :username %></h4></td>
+			<td><%= f.text_field :username %></td>
+		</tr>
+		<tr>
+			<td><h4><%= f.label :email %></h4></td>
+			<td><%= f.text_field :email %></td>
+		</tr>
+		<tr>
+			<td><h4><%= f.label :password %></h4></td>
+			<td><%= f.password_field :password %></td>
+		</tr>
+		<tr>
+			<td><h4><%= f.label :password_confirmation, "Confirmation" %></h4></td>
+			<td><%= f.password_field :password_confirmation %></td>
+		</tr>
+	</table>
+	<div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+	<% end %>
+</div>

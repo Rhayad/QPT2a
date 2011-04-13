@@ -1,0 +1,10 @@
+<% if signed_in?
+	checkInvitation = GroupMember.new
+	get = checkInvitation.queryGroupsOfUser(current_user.id, 'f') %>
+   
+	<% unless get.empty? %>
+		<%= link_to "New invitation !", groups_path %>
+	<% else %>
+		<%= link_to "No invitations", groups_path %>
+	<% end %>
+<%  end %>

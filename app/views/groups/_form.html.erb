@@ -1,0 +1,10 @@
+<%= render 'shared/error_msg', :obj => @group %>
+<%= form_for @group, :url => urlForm do |f| %>
+    <div class="field">
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+    </div>
+    <div class="actions">
+        <%= f.submit sButton %>
+    </div>
+<% end %>
